@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Form Toggler demo</title>
+		<style>
+			body {
+				margin: 0;
+				font-family: sans-serif;
+			}
+
+			.container {
+				max-width: 900px;
+				margin: 20px auto;
+				padding: 20px;
+				background: #FAFAFA;
+			}
+
+			h1 {
+				margin: 0 0 20px 0;
+			}
+
+			hr {
+				border: 0;
+				border-bottom: 1px solid #C0C0C0;
+				margin: 1em 0;
+			}
+		</style>
+		<link rel="stylesheet" href="formToggler.css">
+	</head>
+
+	<body>
+
+		<div class="container">
+			<h1>Website body</h1>
+			<form id="my-form" action="api" method="post">
+				<label>Radio buttons</label>
+				<fieldset>
+					<input type="radio" name="radio-group" id="radio-group-1" value="1"><label for="radio-group-1">Don't display the box</label>
+					<input type="radio" name="radio-group" id="radio-group-2" value="2"><label for="radio-group-2">Display the box</label>
+					<div data-ft-name="radio-group" data-ft-value="2">
+						<label for="radio-toggled">Another field:</label><input type="text" name="radio-toggled">
+					</div>
+				</fieldset>
+				<hr>
+				<label>Checkboxes</label>
+				<fieldset>
+					<input type="checkbox" name="checkbox-group" id="checkbox-group-1" value="1"><label for="checkbox-group-1">Won't display the box</label>
+					<input type="checkbox" name="checkbox-group" id="checkbox-group-2" value="2"><label for="checkbox-group-2">Will display the box</label>
+					<div data-ft-name="checkbox-group" data-ft-value="2">
+						<label for="checkbox-toggled">Another field:</label><input type="text" name="checkbox-toggled">
+					</div>
+				</fieldset>
+				<hr>
+				<label for="select-group">Select a field:</label>
+				<select name="select-group">
+					<option></option>
+					<option value="1">Don't display the box</option>
+					<option value="2">Display the box</option>
+				</select>
+				<div data-ft-name="select-group" data-ft-value="2">
+					<label for="select-toggled">Another field:</label><input type="text" name="select-toggled">
+				</div>
+				<hr>
+				<label for="text-box">Enter 'display':</label>
+				<input id="text-box" name="text-box" type="text">
+				<div data-ft-name="text-box" data-ft-value="display">
+					<label for="text-toggled">Another field:</label><input type="text" name="text-toggled">
+				</div>
+			</form>
+		</div>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="jquery.formToggler.js"></script>
+		<script>
+			$(function () {
+				$('#my-form').formToggler();
+			});
+		</script>
+
+	</body>
+
+</html>
