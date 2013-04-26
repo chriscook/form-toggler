@@ -1,5 +1,5 @@
 /*
- * Form Toggler jQuery Plugin version 1.0
+ * Form Toggler jQuery Plugin version 1.1
  * Chris Cook - chris@chris-cook.co.uk
  */
 
@@ -27,8 +27,9 @@
 			var triggerValue = $toToggle.data('ft-value') + '';
 			var inputType = null;
 			var radioValue = null;
-			function toggle(check) {
-				check ? $toToggle.show() : $toToggle.hide();
+			var i;
+			function toggle($element, check) {
+				check ? $element.show() : $element.hide();
 			}
 			if ($target.prop('tagName') === 'INPUT') {
 				inputType = $target.attr('type');
@@ -38,15 +39,21 @@
 			switch (inputType) {
 				case 'radio':
 					radioValue = $form.find('[name=' + $target.attr('name') + ']:checked').val() + '';
-					toggle(radioValue === triggerValue);
+					for (i = 0; i < $toToggle.length; i++) {
+						toggle($($toToggle[i]), radioValue === triggerValue);
+					}
 					break;
 				case 'checkbox':
 					if ($target.val() === triggerValue) {
-						toggle($target.is(':checked'));
+						for (i = 0; i < $toToggle.length; i++) {
+							toggle($($toToggle[i]), $target.is(':checked'));
+						}
 					}
 					break;
 				default:
-					toggle($target.val() === triggerValue);
+					for (i = 0; i < $toToggle.length; i++) {
+						toggle($($toToggle[i]), $target.val() === $($toToggle[i]).data('ft-value') + '');
+					}
 					break;
 			}
 		});
