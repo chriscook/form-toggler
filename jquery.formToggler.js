@@ -1,5 +1,5 @@
 /*
- * Form Toggler jQuery Plugin version 1.1
+ * Form Toggler jQuery Plugin version 1.11
  * Chris Cook - chris@chris-cook.co.uk
  */
 
@@ -30,6 +30,11 @@
 			var i;
 			function toggle($element, check) {
 				check ? $element.show() : $element.hide();
+				if ($inputs.attr('disabled')) {
+					$inputs.removeAttr('disabled');
+				} else {
+					$inputs.attr('disabled', 'disabled');
+				}
 			}
 			if ($target.prop('tagName') === 'INPUT') {
 				inputType = $target.attr('type');

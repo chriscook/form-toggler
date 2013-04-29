@@ -1,6 +1,6 @@
 # Form Toggler
 
-## Version 1.1
+## Version 1.11
 
 ### Introduction
 
