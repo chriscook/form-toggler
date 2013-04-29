@@ -29,10 +29,12 @@
 			var radioValue = null;
 			var i;
 			function toggle($element, check) {
-				check ? $element.show() : $element.hide();
-				if ($inputs.attr('disabled')) {
+				var $inputs = $element.find('input, select, textarea');
+				if (check) {
+					$element.show();
 					$inputs.removeAttr('disabled');
 				} else {
+					$element.hide();
 					$inputs.attr('disabled', 'disabled');
 				}
 			}
