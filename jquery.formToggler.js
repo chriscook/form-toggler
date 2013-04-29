@@ -1,5 +1,5 @@
 /*
- * Form Toggler jQuery Plugin version 1.11
+ * Form Toggler jQuery Plugin version 1.13
  * Chris Cook - chris@chris-cook.co.uk
  */
 
@@ -15,9 +15,11 @@
 			var $current;
 			var i;
 			for (i = 0; i < $hiddenAreas.length; i++) {
-					$current = $($hiddenAreas[i]);
+				$current = $($hiddenAreas[i]);
 				if ($form.find('[name="' + $current.attr('data-ft-name') + '"]:checked').val() === $current.attr('data-ft-value')) {
 					$current.show();
+				} else {
+					$current.find('input, select, textarea').attr('disabled', 'disabled');
 				}
 			}
 		})();
